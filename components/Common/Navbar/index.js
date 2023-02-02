@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -9,38 +10,40 @@ const Navbar = () => {
         <nav className="relative" aria-label="Global">
           <div className="flex justify-between">
             <div className="flex justify-between gap-6">
-              <a
-                href="#"
+              <Link
+                href="/"
                 className="font-medium mr-8 text-gray-500 hover:text-gray-900"
               >
-                Product
-              </a>
-              <a
-                href="#"
-                className="font-medium mr-8 text-gray-500 hover:text-gray-900"
-              >
-                Features
-              </a>
-              <a
-                href="#"
+                Home
+              </Link>
+              <Link
+                href="/marketplace"
                 className="font-medium mr-8 text-gray-500 hover:text-gray-900"
               >
                 Marketplace
-              </a>
+              </Link>
+              <Link
+                href="/blogs"
+                className="font-medium mr-8 text-gray-500 hover:text-gray-900"
+              >
+                Blogs
+              </Link>
             </div>
+
             <div>
-              <a
+              <Link
                 href="#"
                 className="font-medium mr-8 text-gray-500 hover:text-gray-900"
               >
                 Company
-              </a>
-              <a
+              </Link>
+
+              <Link
                 href="#"
-                className="font-medium mr-8 text-indigo-600 hover:text-indigo-500"
+                className="px-8 rounded-md py-3 border text-base font-medium  text-white bg-indigo-500 hover:bg-indigo-700"
               >
-                Log in
-              </a>
+                Connect
+              </Link>
             </div>
           </div>
         </nav>
