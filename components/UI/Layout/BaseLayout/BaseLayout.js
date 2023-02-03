@@ -1,7 +1,8 @@
 /** @format */
 
-import { Footer, Navbar } from "@/components/Common";
+import { Footer, Navbar } from "@components/UI/Common";
 import React from "react";
+import { WebProvider } from "@components/Provider";
 
 const BaseLayout = ({ children }) => {
   return (

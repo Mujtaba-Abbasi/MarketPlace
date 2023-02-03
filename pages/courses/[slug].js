@@ -1,7 +1,12 @@
 /** @format */
 
-import { BaseLayout } from "@components/Layout";
-import { HeroCourse, KeyPoints, Curriculum, Modal } from "@components/Course";
+import { BaseLayout } from "@components/UI/Layout";
+import {
+  HeroCourse,
+  KeyPoints,
+  Curriculum,
+  Modal,
+} from "@components/UI/Course";
 import { getAllCourses } from "@content/courses/fetcher";
 
 export default function Course({ course }) {
