@@ -2,13 +2,11 @@
 
 import React from "react";
 
-const WallerBar = () => {
+const WallerBar = ({ address, network }) => {
   return (
     <section className="text-white bg-indigo-600">
       <div className="p-8">
-        <h1 className="text-2xl">
-          Hello, 0xd9D5cD41Fe921A743F2b5Fe71CC3070F5C176208
-        </h1>
+        <h1 className="text-2xl">Hello, {address}</h1>
         <h2 className="subtitle mb-5 text-xl">
           I hope you are having a great day!
         </h2>
@@ -23,10 +21,23 @@ const WallerBar = () => {
               </a>
             </div>
           </div>
+
           <div>
+            {network.isFetched && !network.isSupported && (
+              <div className="bg-red-400 p-3 rounded-lg">
+                <div>Connected to wrong Network</div>
+                <div>
+                  Connect to: {` `}
+                  <strong className="text-2xl">{network.targetNetwork}</strong>
+                </div>
+              </div>
+            )}
+
             <div>
-              <span>Currently on </span>
-              <strong className="text-2xl">Ethereum Main Network</strong>
+              <div>
+                <span>Currently on </span>
+                <strong className="text-2xl">{network.data}</strong>
+              </div>
             </div>
           </div>
         </div>
