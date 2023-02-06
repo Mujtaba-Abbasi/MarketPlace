@@ -1,10 +1,16 @@
 /** @format */
 
+import { useWalletInfo } from "@components/hooks/web3";
+import { useWeb3 } from "@components/Provider";
 import React from "react";
 
-const WallerBar = ({ address, network }) => {
+const WalletBar = () => {
+  const { network, account } = useWalletInfo();
+  const address = account;
+  const { requireInstall } = useWeb3();
+
   return (
-    <section className="text-white bg-indigo-600">
+    <section className="text-white bg-indigo-600 rounded-lg">
       <div className="p-8">
         <h1 className="text-2xl">Hello, {address}</h1>
         <h2 className="subtitle mb-5 text-xl">
@@ -22,28 +28,38 @@ const WallerBar = ({ address, network }) => {
             </div>
           </div>
 
-          <div>
-            {network.isFetched && !network.isSupported && (
-              <div className="bg-red-400 p-3 rounded-lg">
-                <div>Connected to wrong Network</div>
-                <div>
-                  Connect to: {` `}
-                  <strong className="text-2xl">{network.targetNetwork}</strong>
-                </div>
-              </div>
-            )}
-
-            <div>
-              <div>
-                <span>Currently on </span>
-                <strong className="text-2xl">{network.data}</strong>
-              </div>
+          {requireInstall ? (
+            <div className="bg-yellow-500 p-3 rounded-lg">
+              Cannot connect to network. Please install Metamask
             </div>
-          </div>
+          ) : (
+            <div>
+              {network.isFetched && !network.isSupported ? (
+                <div className="bg-red-400 p-3 rounded-lg">
+                  <div>Connected to wrong Network</div>
+                  <div>
+                    Connect to: {` `}
+                    <strong className="text-2xl">
+                      {network.targetNetwork}
+                    </strong>
+                  </div>
+                </div>
+              ) : (
+                network.data && (
+                  <div>
+                    <div>
+                      <span>Currently on </span>
+                      <strong className="text-2xl">{network.data}</strong>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>
   );
 };
 
-export default WallerBar;
+export default WalletBar;

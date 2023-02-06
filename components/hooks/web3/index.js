@@ -8,3 +8,16 @@ export const useAccount = () => {
 export const useNetwork = () => {
   return useHooks((hooks) => hooks.useNetwork());
 };
+
+export const useWalletInfo = () => {
+  const { account } = useAccount();
+  const { network } = useNetwork();
+
+  const canPurchaseCourse = !!(account && network.isSupported);
+
+  return {
+    account,
+    network,
+    canPurchaseCourse,
+  };
+};

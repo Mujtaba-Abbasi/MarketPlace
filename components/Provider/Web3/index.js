@@ -37,10 +37,11 @@ export default function WebProvider({ children }) {
   }, []);
 
   const _web3Api = useMemo(() => {
-    const { web3, provider, contract } = web3Api;
+    const { web3, provider, contract, isLoading } = web3Api;
     return {
       ...web3Api,
       isWeb3Loaded: web3,
+      requireInstall: !isLoading && !web3,
       getHooks: () => setupHooks({ web3, provider, contract }),
       connect: provider
         ? async () => {

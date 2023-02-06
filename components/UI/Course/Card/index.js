@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({ course }) => {
+const Card = ({ course, Footer, disabled }) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="flex h-full">
         <div className="h-full flex w-full">
           <Image
-            className="object-cover"
+            className={`object-cover ${disabled && "filter grayscale"}`}
             height="230"
             width="200"
             src={course.coverImage}
@@ -27,6 +27,7 @@ const Card = ({ course }) => {
             {course.title}
           </Link>
           <p className="mt-2 text-gray-500">{course.description}</p>
+          {Footer && <Footer />}
         </div>
       </div>
     </div>
