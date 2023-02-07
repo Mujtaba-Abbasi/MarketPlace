@@ -12,7 +12,6 @@ export const useNetwork = () => {
 export const useWalletInfo = () => {
   const { account } = useAccount();
   const { network } = useNetwork();
-
   const canPurchaseCourse = !!(account && network.isSupported);
 
   return {

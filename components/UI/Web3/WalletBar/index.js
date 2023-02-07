@@ -5,10 +5,9 @@ import { useWeb3 } from "@components/Provider";
 import React from "react";
 
 const WalletBar = () => {
-  const { network, account } = useWalletInfo();
+  const { account, network } = useWalletInfo();
   const address = account;
   const { requireInstall } = useWeb3();
-
   return (
     <section className="text-white bg-indigo-600 rounded-lg">
       <div className="p-8">

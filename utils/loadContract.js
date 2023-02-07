@@ -2,7 +2,7 @@
 
 import Web3 from "web3";
 
-const NETWORK_ID = processs.env.NEXT_PUBLIC_NETWORK_ID;
+const NETWORK_ID = process.env.NEXT_PUBLIC_NETWORK_ID;
 
 export const loadContract = async (name, provider) => {
   const res = await fetch(`/contracts/${name}.json`);

@@ -4,13 +4,12 @@ import React from "react";
 import Link from "next/link";
 import { useWeb3 } from "@components/Provider";
 import Button from "../Button";
-import { useAccount } from "@components/hooks/web3";
+import { useAccount, useNetwork } from "@components/hooks/web3";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
   const { connect, isLoading, isWeb3Loaded } = useWeb3();
   const { account, isAdmin } = useAccount();
-  console.log(account);
   const { pathname } = useRouter();
   return (
     <section>
