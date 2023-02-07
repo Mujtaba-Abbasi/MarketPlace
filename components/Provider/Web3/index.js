@@ -8,13 +8,26 @@ import { loadContract } from "utils/loadContract";
 
 export const Web3Context = createContext(null);
 
+const createWeb3State = ({ web3, provider, contract, isLoading }) => {
+  return {
+    provider,
+    web3,
+    contract,
+    isLoading,
+    hooks: setupHooks({ web3, provider, contract }),
+  };
+};
+
 export default function WebProvider({ children }) {
-  const [web3Api, setWeb3Api] = useState({
-    provider: null,
-    web3: null,
-    contract: null,
-    isLoading: true,
-  });
+  const [web3Api, setWeb3Api] = useState(
+    createWeb3State({
+      web3: null,
+      provider: null,
+      contract: null,
+      isLoading: true,
+      // hooks: setupHooks({ web3, provider, contract }),
+    })
+  );
 
   useEffect(() => {
     const loadProvider = async () => {
@@ -22,12 +35,14 @@ export default function WebProvider({ children }) {
 
       if (provider) {
         const contract = await loadContract("CourseMarketplace", provider);
-        setWeb3Api({
-          provider: provider,
-          web3: new Web3(provider),
-          contract: contract,
-          isLoading: false,
-        });
+        setWeb3Api(
+          createWeb3State({
+            provider,
+            web3: new Web3(provider),
+            contract,
+            isLoading: false,
+          })
+        );
       } else {
         setWeb3Api((prevState) => ({
           ...prevState,
@@ -44,7 +59,6 @@ export default function WebProvider({ children }) {
       ...web3Api,
       isWeb3Loaded: web3,
       requireInstall: !isLoading && !web3,
-      getHooks: () => setupHooks({ web3, provider }),
       connect: provider
         ? async () => {
             try {
@@ -70,6 +84,6 @@ export function useWeb3() {
 }
 
 export function useHooks(cb) {
-  const { getHooks } = useWeb3();
-  return cb(getHooks());
+  const { hooks } = useWeb3();
+  return cb(hooks);
 }

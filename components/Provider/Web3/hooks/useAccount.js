@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import useSWR from "swr";
 
 // const adminAddress = "0xE7D2d414a6Ff6B7Cb85C233dc896c00231d8f52e";
