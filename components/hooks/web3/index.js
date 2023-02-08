@@ -12,7 +12,14 @@ export const useNetwork = () => {
 export const useOwnedCourses = (...args) => {
   const swrRes = useHooks((hooks) => hooks.useOwnedCourses(...args));
   return {
-    ownedCourses: { data: swrRes },
+    ownedCourses: swrRes,
+  };
+};
+export const useOwnedCourse = (...args) => {
+  const swrRes = useHooks((hooks) => hooks.useOwnedCourses(...args));
+  console.log(swrRes);
+  return {
+    ownedCourse: swrRes,
   };
 };
 

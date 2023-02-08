@@ -2,7 +2,7 @@
 
 import { useAccount, useOwnedCourses } from "@components/hooks/web3";
 import { Button } from "@components/UI/Common";
-import Message from "@components/UI/Common/Message";
+import Message from "@components/UI/Common/Message/Message";
 import OwnedCourseCard from "@components/UI/Course/Card/OwnedCourseCard";
 import { BaseLayout } from "@components/UI/Layout";
 import { Header } from "@components/UI/Marketplace";
@@ -11,8 +11,9 @@ import { getAllCourses } from "@content/courses/fetcher";
 
 const OwnedCourses = ({ courses }) => {
   const { account } = useAccount();
-
+  console.log(account);
   const { ownedCourses } = useOwnedCourses(courses, account);
+  console.log(ownedCourses);
   return (
     <BaseLayout>
       <Header />

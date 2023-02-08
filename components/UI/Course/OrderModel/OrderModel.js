@@ -3,7 +3,7 @@
 import { useEthPrice } from "@components/hooks/useEthPrice";
 import { Button } from "@components/UI/Common";
 import { useEffect, useState } from "react";
-import Modal from "../Modal";
+import Modal from "../Modal/Modal";
 
 const defaultOrder = {
   price: "",

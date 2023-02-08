@@ -14,14 +14,12 @@ export const handler = (web3, provider) => () => {
     async () => {
       const accounts = await web3.eth.getAccounts();
       const account = accounts[0];
-
+      console.log("UseAccount is called : ", account);
       if (!account) {
         throw new Error(
           "Cannot retreive an account. Please refresh the browser."
         );
       }
-      console.log(account);
-      //data = account address
       return account;
     }
   );

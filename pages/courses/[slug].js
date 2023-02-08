@@ -8,8 +8,12 @@ import {
   Modal,
 } from "@components/UI/Course";
 import { getAllCourses } from "@content/courses/fetcher";
+import { useAccount, useOwnedCourse } from "@components/hooks/web3";
 
 export default function Course({ course }) {
+  const { account } = useAccount();
+  const { ownedCourse } = useOwnedCourse(course, account);
+  console.log(ownedCourse);
   return (
     <BaseLayout>
       <div className="py-4">
