@@ -7,16 +7,15 @@ const Card = ({ course, Footer, disabled }) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="flex h-full">
-        <div className="h-full flex w-full">
+        <div className="h-full flex-3 w-full next-image-wrapper relative">
           <Image
             className={`object-cover ${disabled && "filter grayscale"}`}
-            height="230"
-            width="200"
+            fill={true}
             src={course.coverImage}
             alt={course.title}
           />
         </div>
-        <div className="p-8">
+        <div className="p-8 flex-4">
           <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
             {course.type}
           </div>

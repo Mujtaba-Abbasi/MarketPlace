@@ -13,15 +13,18 @@ const OwnedCourses = ({ courses }) => {
   const { account } = useAccount();
   console.log(account);
   const { ownedCourses } = useOwnedCourses(courses, account);
-  console.log("OwnedCourses ", ownedCourses);
   return (
     <BaseLayout>
       <Header />
       <section className="grid grid-cols-1">
-        <OwnedCourseCard>
-          <Message>My custom message!</Message>
-          <Button>Watch the course</Button>
-        </OwnedCourseCard>
+        {ownedCourses?.map((course) => {
+          return (
+            <OwnedCourseCard key={course.id} course={course}>
+              {/* <Message>My custom message!</Message> */}
+              <Button>Watch the course</Button>
+            </OwnedCourseCard>
+          );
+        })}
       </section>
     </BaseLayout>
   );
