@@ -1,18 +1,19 @@
 /** @format */
 
-import React from "react";
+import { Loader } from "@components/ui/common";
+import Link from "next/link";
 
-const Curriculum = ({ locked }) => {
-  const lectures = [
-    "How to init App",
-    "How to get a help",
-    "Introduction to Solidity",
-    "Programing in C++",
-    "How to write For Loops",
-    "Safe operator",
-  ];
+const lectures = [
+  "How to init App",
+  "How to get a help",
+  "Introduction to Solidity",
+  "Programing in C++",
+  "How to write For Loops",
+  "Safe operator",
+];
 
-  const lockedClass =
+export default function Curriculum({ locked, courseState, isLoading }) {
+  const statusClass =
     "px-2 inline-flex text-xs leading-5 font-semibold rounded-full";
   return (
     <section className="max-w-5xl mx-auto">
@@ -56,20 +57,43 @@ const Curriculum = ({ locked }) => {
                         <span
                           className={
                             locked
-                              ? `bg-red-100 text-red-800 ${lockedClass}`
-                              : `bg-green-100 text-green-800 `
+                              ? `bg-red-100 text-red-800 ${statusClass}`
+                              : `bg-green-100 text-green-800 ${statusClass}`
                           }
                         >
                           {locked ? "Locked" : "Unlocked"}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          {locked ? "Get Access" : "Play"}
-                        </a>
+                        {isLoading ? (
+                          <Loader />
+                        ) : locked ? (
+                          <>
+                            {courseState === "deactivated" && (
+                              <Link
+                                href="/marketplace"
+                                className="text-indigo-600 hover:text-indigo-900"
+                              >
+                                Get Access
+                              </Link>
+                            )}
+                            {courseState === "purchased" && (
+                              <Link
+                                href="/faq"
+                                className="text-yellow-500 hover:text-yellow-900"
+                              >
+                                Waiting for activation...
+                              </Link>
+                            )}
+                          </>
+                        ) : (
+                          <Link
+                            href="/watch"
+                            className="text-indigo-600 hover:text-indigo-900"
+                          >
+                            Watch
+                          </Link>
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -81,6 +105,4 @@ const Curriculum = ({ locked }) => {
       </div>
     </section>
   );
-};
-
-export default Curriculum;
+}

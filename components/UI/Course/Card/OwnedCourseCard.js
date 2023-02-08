@@ -6,7 +6,7 @@ export default function OwnedCourseCard({ children, course }) {
     <div className="bg-white border shadow overflow-hidden sm:rounded-lg mb-3">
       <div className="flex">
         <div className="flex-1">
-          <div className="h-full flex w-full relative next-image-wrapper">
+          <div className="h-full relative flex w-full next-image-wrapper">
             <Image
               className="object-cover"
               alt={course.title}

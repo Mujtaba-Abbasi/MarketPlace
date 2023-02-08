@@ -31,12 +31,10 @@ export const handler = (web3, contract) => (courses, account) => {
           console.log(error);
         }
       }
-      console.log("These are ownedCourses", ownedCourses);
       return ownedCourses;
     }
   );
 
-  console.log("This is SWRresponse", swrRes.data);
   return swrRes;
 };
 
