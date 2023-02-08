@@ -41,6 +41,11 @@ export default function Martketplace({ courses }) {
       const res = await contract.methods
         .purchaseCourse(hexCourseId, proof)
         .send({ from: account, value: val });
+
+      const ownedCourse = await contract.methods
+        .getCourseByHash(orderHash)
+        .call();
+      console.log(ownedCourse);
     } catch (error) {
       console.log("Purchased Failed!");
     }

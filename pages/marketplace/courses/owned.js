@@ -13,7 +13,7 @@ const OwnedCourses = ({ courses }) => {
   const { account } = useAccount();
   console.log(account);
   const { ownedCourses } = useOwnedCourses(courses, account);
-  console.log(ownedCourses);
+  console.log("OwnedCourses ", ownedCourses);
   return (
     <BaseLayout>
       <Header />
